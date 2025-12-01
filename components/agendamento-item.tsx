@@ -15,6 +15,20 @@ interface AgendamentoItemProps {
   veiculo: Veiculo;
 }
 
+const statusColors: Record<string, string> = {
+  confirmado: '#4CAF50',
+  pendente: '#FFC107',
+  concluido: '#2196F3',
+  cancelado: '#F44336',
+};
+
+const statusLabels: Record<string, string> = {
+  confirmado: '✓ Confirmado',
+  pendente: '⏳ Pendente',
+  concluido: '✓ Concluído',
+  cancelado: '✗ Cancelado',
+};
+
 export function AgendamentoItem({
   agendamento,
   oficina,

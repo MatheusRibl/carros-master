@@ -72,7 +72,7 @@ export default function AgendamentosScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}>
         {agendamentosOrdenados.length > 0 ? (
-          agendamentosOrdenados.map((agendamento) => {
+          agendamentosOrdenados.map((agendamento: any) => {
             const veiculo = getVeiculoById(agendamento.veiculoId);
             const oficina = getOficinaById(agendamento.oficinaId);
             const servico = getServicoById(agendamento.servicoId);

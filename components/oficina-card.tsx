@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-  },
+  } as any,
   ratingText: {
     fontSize: 14,
     fontWeight: '600',
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 6,
     marginBottom: 12,
-  },
+  } as any,
   badge: {
     paddingHorizontal: 10,
     paddingVertical: 6,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   contactButtons: {
     flexDirection: 'row',
     gap: 8,
-  },
+  } as any,
   contactButton: {
     flex: 1,
     paddingVertical: 10,
@@ -229,30 +229,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     opacity: 0.6,
     fontWeight: '500',
-  },
-});
-  },
-  especialidades: {
-    flexDirection: 'row',
-    gap: 6,
-    marginBottom: 8,
-    flexWrap: 'wrap',
-  },
-  badge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
-  },
-  badgeText: {
-    fontSize: 12,
-  },
-  footer: {
-    borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
-    paddingTop: 8,
-  },
-  telefone: {
-    fontSize: 12,
-    opacity: 0.7,
   },
 });

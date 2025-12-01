@@ -102,15 +102,15 @@ export default function HomeScreen() {
               {filteredOficinas.length !== 1 ? 's' : ''}
               {favorites.length > 0 && ` • ${favorites.length} favorita${favorites.length !== 1 ? 's' : ''}`}
             </ThemedText>
-            {filteredOficinas.map((oficina) => (
+            {filteredOficinas.map((oficina: any) => (
               <OficinaCard
                 key={oficina.id}
                 oficina={oficina}
                 isFavorite={favorites.includes(oficina.id)}
                 onToggleFavorite={() => {
-                  setFavorites(prev => 
+                  setFavorites((prev: any) => 
                     prev.includes(oficina.id)
-                      ? prev.filter(id => id !== oficina.id)
+                      ? prev.filter((id: any) => id !== oficina.id)
                       : [...prev, oficina.id]
                   );
                 }}
