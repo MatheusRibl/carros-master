@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { StatusBadge } from '@/components/status-badge';
 import { Colors } from '@/constants/theme';
+import { FormatUtils, DateUtils } from '../utils/index';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import type { Agendamento, Oficina, Servico, Veiculo } from '../types/index.js';
 
 interface AgendamentoItemProps {
@@ -12,35 +15,21 @@ interface AgendamentoItemProps {
   veiculo: Veiculo;
 }
 
-const statusLabels: Record<string, string> = {
-  pendente: '⏳ Pendente',
-  confirmado: '✅ Confirmado',
-  em_andamento: '🔧 Em Andamento',
-  concluido: '✔️ Concluído',
-  cancelado: '❌ Cancelado',
-};
-
-const statusColors: Record<string, string> = {
-  pendente: '#FFA500',
-  confirmado: '#4CAF50',
-  em_andamento: '#2196F3',
-  concluido: '#4CAF50',
-  cancelado: '#F44336',
-};
-
 export function AgendamentoItem({
   agendamento,
   oficina,
   servico,
   veiculo,
 }: AgendamentoItemProps) {
+  const colorScheme = useColorScheme() as 'light' | 'dark';
+  const theme = Colors[colorScheme];
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
   // Formatar data
-  const data = new Date(agendamento.dataAgendamento);
-  const dataFormatada = data.toLocaleDateString('pt-BR', {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short',
-  });
+  const dataFormatada = DateUtils.formatarDataBr(agendamento.dataAgendamento);
+  const tempoFalta = DateUtils.tempoFalta(agendamento.dataAgendamento);
+  const ehHoje = DateUtils.ehHoje(agendamento.dataAgendamento);
+  const ehAmanha = DateUtils.ehAmanha(agendamento.dataAgendamento);
 
   return (
     <ThemedView style={styles.container}>

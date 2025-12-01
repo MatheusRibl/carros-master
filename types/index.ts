@@ -62,6 +62,47 @@ export interface Avaliacao {
   agendamentoId: string;
   usuarioId: string;
   oficinaId: string;
+  rating: number;
+  comentario: string;
+  dataAvaliacao: string;
+}
+
+export interface Comunidade {
+  id: string;
+  nome: string;
+  descricao: string;
+  membros: number;
+  tema: 'carros' | 'economia' | 'vizinhanca' | 'outro';
+  criador: string;
+  dataCriacao: string;
+}
+
+export interface Compartilhamento {
+  id: string;
+  titulo: string;
+  descricao: string;
+  custo: number;
+  participantes: string[];
+  oficina: Oficina;
+  servico: Servico;
+  dataAgendamento: string;
+  status: 'aberto' | 'cheio' | 'concluido';
+}
+
+export interface Referencia {
+  id: string;
+  usuarioReferidor: string;
+  usuarioIndicado: string;
+  desconto: number;
+  dataCriacao: string;
+  utilizada: boolean;
+}
+
+export interface AvaliacaoOld {
+  id: string;
+  agendamentoId: string;
+  usuarioId: string;
+  oficinaId: string;
   rating: number; // 1-5
   comentario: string;
   dataCriacao: string;

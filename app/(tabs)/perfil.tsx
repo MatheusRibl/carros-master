@@ -2,6 +2,8 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { ReputacaoUsuario } from '@/components/reputacao-usuario';
+import { ReferenceWidget } from '@/components/reference-widget';
 import { Colors } from '@/constants/theme';
 import { usuarioAtual, veiculosDoUsuario } from '../../data/mock.js';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -16,6 +18,12 @@ export default function PerfilScreen() {
         style={styles.content}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}>
+        {/* Seção de Reputação */}
+        <ReputacaoUsuario usuarioId={usuarioAtual.id} />
+
+        {/* Seção de Referências */}
+        <ReferenceWidget usuarioId={usuarioAtual.id} />
+
         {/* Seção de Perfil do Usuário */}
         <View style={styles.section}>
           <ThemedText type="title" style={styles.sectionTitle}>
